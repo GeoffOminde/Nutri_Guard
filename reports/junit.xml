@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="NutriGuard Test Suite" 
+            tests="1" 
+            failures="0" 
+            errors="1" 
+            time="47.30">
+    <testsuite name="nutriguard.tests" 
+               tests="1" 
+               failures="0" 
+               errors="1" 
+               time="47.30">
+        <!-- Individual test cases would be listed here in a full implementation -->
+    </testsuite>
+</testsuites>

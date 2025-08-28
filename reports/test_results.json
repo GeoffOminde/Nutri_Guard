@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-08-28T14:05:06.298972",
+  "total_tests": 1,
+  "passed": 0,
+  "failed": 0,
+  "errors": 1,
+  "skipped": 0,
+  "coverage": 2.0,
+  "duration": 47.2969765663147,
+  "test_files": []
+}
