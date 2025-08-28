@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriGuard - Zero Hunger Initiative</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="description" content="NutriGuard - AI-powered food security platform supporting SDG 2 Zero Hunger initiative">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-seedling"></i>
+                <h2>NutriGuard</h2>
+            </div>
+            <div class="loading-spinner"></div>
+            <p>Initializing food security platform...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-seedling"></i>
+                <span>NutriGuard</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#dashboard" class="nav-link">Dashboard</a>
+                <a href="#donate" class="nav-link">Donate</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            <div class="nav-auth">
+                <button class="btn-secondary" onclick="openModal('loginModal')">Login</button>
+                <button class="btn-primary" onclick="openModal('registerModal')">Register</button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Zero Hunger</span> Through 
+                    <span class="typewriter" id="typewriter"></span>
+                </h1>
+                <p class="hero-description">
+                    Empowering communities with AI-driven food security solutions. 
+                    Connect farmers, donors, and beneficiaries in the fight against hunger.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="10000">0</span>
+                        <span class="stat-label">Lives Impacted</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="500">0</span>
+                        <span class="stat-label">Farmers Connected</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="1000000">0</span>
+                        <span class="stat-label">Meals Analyzed</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn-primary btn-large" onclick="scrollToSection('features')">
+                        <i class="fas fa-rocket"></i>
+                        Get Started
+                    </button>
+                    <button class="btn-outline btn-large" onclick="openModal('demoModal')">
+                        <i class="fas fa-play"></i>
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-cards">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-brain"></i>
+                        <h4>AI Nutrition Analysis</h4>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-seedling"></i>
+                        <h4>Crop Prediction</h4>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-heart"></i>
+                        <h4>Community Support</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Innovative Solutions for Food Security</h2>
+                <p class="section-subtitle">Leveraging cutting-edge technology to address SDG 2</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Nutrition Analysis</h3>
+                    <p>Advanced AI analyzes meal photos and descriptions to provide detailed nutritional breakdowns and personalized recommendations.</p>
+                    <button class="btn-feature" onclick="openNutritionAnalyzer()">Try Now</button>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Crop Yield Prediction</h3>
+                    <p>Machine learning models predict crop yields based on soil conditions, weather patterns, and historical data.</p>
+                    <button class="btn-feature" onclick="openCropPredictor()">Predict Yield</button>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Secure Payments</h3>
+                    <p>IntaSend integration enables secure, fast donations and marketplace transactions with mobile money support.</p>
+                    <button class="btn-feature" onclick="openDonationPortal()">Donate Now</button>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Network</h3>
+                    <p>Connect farmers, donors, and beneficiaries in a secure ecosystem that promotes food security and sustainability.</p>
+                    <button class="btn-feature" onclick="openCommunityHub()">Join Community</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>Smart Dashboard</h2>
+                <p>Real-time insights and analytics for informed decision making</p>
+            </div>
+            <div class="dashboard-content" id="dashboard-content">
+                <div class="dashboard-login-prompt">
+                    <i class="fas fa-lock"></i>
+                    <h3>Access Your Dashboard</h3>
+                    <p>Login to view personalized insights and manage your activities</p>
+                    <button class="btn-primary" onclick="openModal('loginModal')">Login to Continue</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donate" class="donation-section">
+        <div class="container">
+            <div class="donation-header">
+                <h2>Support the Cause</h2>
+                <p>Every contribution helps fight hunger and malnutrition in our communities</p>
+            </div>
+            <div class="donation-grid">
+                <div class="donation-card">
+                    <div class="donation-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Feed a Family</h3>
+                    <p class="donation-amount">$25</p>
+                    <p>Provides nutritious meals for a family of four for one week</p>
+                    <button class="btn-donate" onclick="initiateDonation(25, 'Feed a Family')">Donate Now</button>
+                </div>
+                <div class="donation-card featured">
+                    <div class="donation-badge">Most Popular</div>
+                    <div class="donation-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Support a Farmer</h3>
+                    <p class="donation-amount">$100</p>
+                    <p>Helps a smallholder farmer access seeds, tools, and training</p>
+                    <button class="btn-donate" onclick="initiateDonation(100, 'Support a Farmer')">Donate Now</button>
+                </div>
+                <div class="donation-card">
+                    <div class="donation-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Nutrition Education</h3>
+                    <p class="donation-amount">$50</p>
+                    <p>Funds nutrition education programs in rural communities</p>
+                    <button class="btn-donate" onclick="initiateDonation(50, 'Nutrition Education')">Donate Now</button>
+                </div>
+            </div>
+            <div class="custom-donation">
+                <h3>Custom Amount</h3>
+                <div class="custom-donation-form">
+                    <input type="number" id="customAmount" placeholder="Enter amount" min="1">
+                    <input type="text" id="customPurpose" placeholder="Purpose (optional)">
+                    <button class="btn-primary" onclick="initiateCustomDonation()">Donate</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About NutriGuard</h2>
+                    <p>NutriGuard is a comprehensive platform designed to address SDG 2 (Zero Hunger) through innovative technology solutions. We combine artificial intelligence, secure payment systems, and community networking to create a sustainable ecosystem for food security.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Security First</h4>
+                                <p>End-to-end encryption and secure payment processing</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-cogs"></i>
+                            <div>
+                                <h4>AI-Powered</h4>
+                                <p>Advanced machine learning for nutrition and crop analysis</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-globe"></i>
+                            <div>
+                                <h4>Global Impact</h4>
+                                <p>Scalable solution for communities worldwide</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="impact-metrics">
+                        <div class="metric">
+                            <h3 id="metric-users">0</h3>
+                            <p>Active Users</p>
+                        </div>
+                        <div class="metric">
+                            <h3 id="metric-donations">$0</h3>
+                            <p>Total Donations</p>
+                        </div>
+                        <div class="metric">
+                            <h3 id="metric-analyses">0</h3>
+                            <p>AI Analyses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login to NutriGuard</h3>
+                <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            </div>
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Login</button>
+            </form>
+            <p class="auth-switch">Don't have an account? <a href="#" onclick="switchModal('loginModal', 'registerModal')">Register here</a></p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Join NutriGuard</h3>
+                <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            </div>
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label for="registerUsername">Username</label>
+                    <input type="text" id="registerUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="userType">I am a...</label>
+                    <select id="userType" required>
+                        <option value="">Select user type</option>
+                        <option value="beneficiary">Beneficiary (Seeking nutrition support)</option>
+                        <option value="farmer">Farmer (Growing crops)</option>
+                        <option value="donor">Donor (Supporting the cause)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="registerLocation">Location (Optional)</label>
+                    <input type="text" id="registerLocation">
+                </div>
+                <div class="form-group">
+                    <label for="registerPhone">Phone (Optional)</label>
+                    <input type="tel" id="registerPhone">
+                </div>
+                <button type="submit" class="btn-primary btn-full">Register</button>
+            </form>
+            <p class="auth-switch">Already have an account? <a href="#" onclick="switchModal('registerModal', 'loginModal')">Login here</a></p>
+        </div>
+    </div>
+
+    <!-- Nutrition Analyzer Modal -->
+    <div id="nutritionModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>AI Nutrition Analyzer</h3>
+                <span class="close" onclick="closeModal('nutritionModal')">&times;</span>
+            </div>
+            <div class="nutrition-analyzer">
+                <div class="analyzer-input">
+                    <label for="mealDescription">Describe your meal:</label>
+                    <textarea id="mealDescription" placeholder="e.g., Grilled chicken breast with steamed broccoli and brown rice" rows="4"></textarea>
+                    <button id="analyzeBtn" class="btn-primary">
+                        <i class="fas fa-brain"></i>
+                        Analyze Nutrition
+                    </button>
+                </div>
+                <div id="nutritionResults" class="nutrition-results" style="display: none;">
+                    <div class="results-header">
+                        <h4>Nutrition Analysis Results</h4>
+                    </div>
+                    <div class="results-content">
+                        <!-- Results will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crop Predictor Modal -->
+    <div id="cropModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Crop Yield Predictor</h3>
+                <span class="close" onclick="closeModal('cropModal')">&times;</span>
+            </div>
+            <div class="crop-predictor">
+                <form id="cropForm" class="predictor-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cropType">Crop Type</label>
+                            <select id="cropType" required>
+                                <option value="">Select crop</option>
+                                <option value="maize">Maize</option>
+                                <option value="rice">Rice</option>
+                                <option value="wheat">Wheat</option>
+                                <option value="beans">Beans</option>
+                                <option value="sweet_potato">Sweet Potato</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cropLocation">Location</label>
+                            <input type="text" id="cropLocation" required placeholder="e.g., Nairobi, Kenya">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="soilType">Soil Type</label>
+                        <select id="soilType" required>
+                            <option value="">Select soil type</option>
+                            <option value="clay">Clay</option>
+                            <option value="sandy">Sandy</option>
+                            <option value="loamy">Loamy</option>
+                            <option value="silt">Silt</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="soilPH">Soil pH</label>
+                            <input type="number" id="soilPH" step="0.1" min="1" max="14" placeholder="6.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="rainfall">Expected Rainfall (mm)</label>
+                            <input type="number" id="rainfall" min="0" placeholder="800">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-chart-line"></i>
+                        Predict Yield
+                    </button>
+                </form>
+                <div id="cropResults" class="crop-results" style="display: none;">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Modal -->
+    <div id="donationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Make a Donation</h3>
+                <span class="close" onclick="closeModal('donationModal')">&times;</span>
+            </div>
+            <form id="donationForm" class="donation-form">
+                <div class="form-group">
+                    <label for="donationAmount">Amount (KES)</label>
+                    <input type="number" id="donationAmount" required min="1">
+                </div>
+                <div class="form-group">
+                    <label for="donationPhone">Phone Number (M-Pesa)</label>
+                    <input type="tel" id="donationPhone" required placeholder="254712345678">
+                </div>
+                <div class="form-group">
+                    <label for="donationPurpose">Purpose</label>
+                    <input type="text" id="donationPurpose" required>
+                </div>
+                <button type="submit" class="btn-primary btn-full">
+                    <i class="fas fa-heart"></i>
+                    Donate Now
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification System -->
+    <div id="notification-container"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-seedling"></i>
+                        <span>NutriGuard</span>
+                    </div>
+                    <p>Empowering communities through technology to achieve Zero Hunger (SDG 2)</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 NutriGuard. All rights reserved. | Built for SDG 2 Zero Hunger Initiative</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
