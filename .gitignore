@@ -1,1 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables
 .env
+.env.example
+
+# Logs
+*.log
+
+# Database files (if any local DB files)
+*.sqlite3
