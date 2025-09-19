@@ -50,4 +50,3 @@ Werkzeug==2.3.7
 wheel==0.45.1
 wrapt==1.17.3
 yarl==1.20.1
-vercel-wsgi==0.4.0

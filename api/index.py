@@ -1,11 +1,20 @@
-# Vercel Serverless entrypoint for Flask via vercel-wsgi
-# This adapts the Flask WSGI app defined in app.py to Vercel's serverless runtime
+"""
+Vercel Python entrypoint for Flask (native WSGI)
 
-from vercel_wsgi import handle
-from app import app
+Expose the Flask WSGI `app` at module scope. Vercel's Python runtime
+can invoke WSGI apps directly without additional adapters.
+"""
 
-# Vercel expects a function named `handler`
-# It will receive (request, context) and we delegate to vercel-wsgi
+import os
+import sys
 
-def handler(request, context):
-    return handle(app, request, context)
+# Ensure project root is on sys.path so we can import `app.py`
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(CURRENT_DIR, os.pardir))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
+from app import app as _flask_app
+
+# Export as `app` to match Vercel's expected symbol
+app = _flask_app
